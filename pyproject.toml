@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "where-to-go"
+version = "0.1.0"
+description = ""
+authors = ["Павел <king-he@mail.ru>"]
+readme = "README.md"
+packages = [{include = "where_to_go"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.1"
+django-environ = "^0.10.0"
+psycopg2 = "^2.9.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
