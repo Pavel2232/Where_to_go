@@ -31,7 +31,7 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
-
+APP = ['to_go']
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+]+ APP
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
