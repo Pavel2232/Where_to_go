@@ -31,7 +31,7 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
-APP = ['to_go']
+APP = ['places']
 # Application definition
 
 INSTALLED_APPS = [
