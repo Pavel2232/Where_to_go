@@ -25,3 +25,10 @@ class ImageNumber(models.IntegerChoices):
 class Image(models.Model):
     imgs = models.ImageField(upload_to='django_media/',choices=ImageNumber.choices, default=ImageNumber.first,verbose_name="Изображение")
     places = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name="Локация")
+
+    class Meta:
+        verbose_name = "Изображение"
+        verbose_name_plural = "Изображения"
+
+    def __str__(self):
+        return self.places.title
