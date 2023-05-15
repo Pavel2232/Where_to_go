@@ -24,8 +24,8 @@ class ImageNumber(models.IntegerChoices):
 
 class Image(models.Model):
     imgs = models.ImageField(upload_to='django_media/',verbose_name="Изображение")
-    places = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name="Локация")
-    number_image = models.IntegerField(max_length=6, choices=ImageNumber.choices, default=ImageNumber.first, verbose_name="Номер фотографии")
+    places = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name="Локация",related_name="image")
+    number_image = models.IntegerField(choices=ImageNumber.choices, default=ImageNumber.first, verbose_name="Номер фотографии")
     class Meta:
         verbose_name = "Изображение"
         verbose_name_plural = "Изображения"
