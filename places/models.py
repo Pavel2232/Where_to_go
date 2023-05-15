@@ -17,3 +17,11 @@ class Place(models.Model):
     def __str__(self):
         return self.title
 
+
+class ImageNumber(models.IntegerChoices):
+    first = 1,"Первая"
+    second = 2, "Вторая"
+
+class Image(models.Model):
+    imgs = models.ImageField(upload_to='django_media/',choices=ImageNumber.choices, default=ImageNumber.first,verbose_name="Изображение")
+    places = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name="Локация")
