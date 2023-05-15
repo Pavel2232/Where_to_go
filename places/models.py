@@ -23,12 +23,12 @@ class ImageNumber(models.IntegerChoices):
     second = 2, "Вторая"
 
 class Image(models.Model):
-    imgs = models.ImageField(upload_to='django_media/',choices=ImageNumber.choices, default=ImageNumber.first,verbose_name="Изображение")
+    imgs = models.ImageField(upload_to='django_media/',verbose_name="Изображение")
     places = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name="Локация")
-
+    number_image = models.IntegerField(max_length=6, choices=ImageNumber.choices, default=ImageNumber.first, verbose_name="Номер фотографии")
     class Meta:
         verbose_name = "Изображение"
         verbose_name_plural = "Изображения"
 
     def __str__(self):
-        return self.places.title
+        return f"{self.number_image} {self.places.title}"
