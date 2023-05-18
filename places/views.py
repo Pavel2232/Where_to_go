@@ -37,7 +37,7 @@ def index(request):
     context = {"places_data": places_data}
     return render(request, "index.html", context )
 
-
+@csrf_exempt
 def detail_view(request, pk):
     place = Place.objects.get(pk=pk)
 
