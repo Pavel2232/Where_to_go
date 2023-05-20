@@ -1,3 +1,3 @@
-from django.test import TestCase
+from places.models import Place
 
-# Create your tests here.
+print(Place.image)
