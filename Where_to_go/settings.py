@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 
-
+    'tinymce',
     'adminsortable2',
 ] + APP
 
