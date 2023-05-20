@@ -6,7 +6,7 @@ from django.urls import reverse
 from places.models import Place, Image
 from django.http import JsonResponse
 
-# Create your views here.
+
 @csrf_exempt
 def index(request):
     features = []
@@ -35,7 +35,8 @@ def index(request):
 
     places_data = {"type": "FeatureCollection", "features": features}
     context = {"places_data": places_data}
-    return render(request, "index.html", context )
+    return render(request, "index.html", context)
+
 
 @csrf_exempt
 def detail_view(request, pk):
@@ -54,6 +55,5 @@ def detail_view(request, pk):
     imgs = Image.objects.filter(places=place.id)
     for image in imgs:
         response['imgs'].append(image.imgs.url)
-
 
     return JsonResponse(response)
