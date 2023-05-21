@@ -3,6 +3,8 @@ version: '3.8'
 services:
   api:
     image: pavel2232/where_to_go:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+    env_file:
+      - .env
     ports:
       - 8000:8000
     depends_on:
