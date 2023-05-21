@@ -10,7 +10,7 @@ services:
     depends_on:
       db:
           condition: service_healthy
-    container_name: where_to_go
+    container_name: where_to_go_app
     volumes:
       - ./Where_to_go/:/where_to_go/Where_to_go
   db:
