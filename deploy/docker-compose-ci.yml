@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  api:
+    image: pavel2232/where_to_go:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+    ports:
+      - 8000:8000
+    depends_on:
+      db:
+          condition: service_healthy
+    container_name: where_to_go
+    volumes:
+      - ./Where_to_go/:/where_to_go/Where_to_go
+  db:
+    image: postgres:12.4-alpine
+    environment:
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: $DB_NAME
+    restart: always
+    ports:
+    - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pablo -d wheretogo"]
+      interval: 5s
+      timeout: 30s
+      retries: 5
+    container_name: pg_db
+
+
+
+
+volumes:
+  Where_to_go:
+  postgres_data:
