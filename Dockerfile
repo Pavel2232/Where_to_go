@@ -1,4 +1,4 @@
-FROM python:3.10.6
+FROM python:3.11.3
 
 WORKDIR Where_to_go/
 RUN pip install "poetry==1.3.1"
