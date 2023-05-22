@@ -1,0 +1,11 @@
+# ignore all
+
+**
+
+# except
+!manage.py
+!Where_to_go/**
+!places/**
+!entrypoint.sh
+!poetry.lock
+!pyproject.toml
