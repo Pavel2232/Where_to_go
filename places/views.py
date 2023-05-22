@@ -7,7 +7,7 @@ from places.models import Place, Image
 from django.http import JsonResponse
 
 
-@csrf_exempt
+
 def index(request):
     features = []
     feature_template = {
@@ -38,7 +38,7 @@ def index(request):
     return render(request, "index.html", context)
 
 
-@csrf_exempt
+
 def detail_view(request, pk):
     place = Place.objects.get(pk=pk)
 
