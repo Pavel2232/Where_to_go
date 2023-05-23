@@ -47,5 +47,5 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd where_to_go
-            docker-compose down
-            docker-compose up -d
+            docker compose down
+            docker compose up -d
