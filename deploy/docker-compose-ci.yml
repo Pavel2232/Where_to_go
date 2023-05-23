@@ -12,8 +12,6 @@ services:
     - "80:80"
     - "8000:8000"
     container_name: where_to_go_app
-    volumes:
-      - ./Where_to_go/:/where_to_go/Where_to_go
   db:
     image: postgres:12.4-alpine
     environment:
@@ -21,8 +19,6 @@ services:
       POSTGRES_PASSWORD: $DB_PASSWORD
       POSTGRES_DB: $DB_NAME
     restart: always
-    ports:
-    - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -36,5 +32,4 @@ services:
 
 
 volumes:
-  Where_to_go:
   postgres_data:
