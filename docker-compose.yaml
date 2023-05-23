@@ -1,6 +1,21 @@
 version: '3.8'
 
 services:
+  api:
+    build: .
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: psql://pablo:password@db:5432/wheretogo
+    ports:
+      - 8000:8000
+      - 80:80
+    depends_on:
+      db:
+        condition: service_healthy
+    container_name: where_to_go_app
+    volumes:
+      - ./Where_to_go/:/where_to_go/Where_to_go
   db:
     image: postgres:12.4-alpine
     environment:
