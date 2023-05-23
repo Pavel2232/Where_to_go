@@ -9,8 +9,8 @@ services:
       db:
           condition: service_healthy
     ports:
-
-      - "8000:8000"
+    - "80:80"
+    - "8000:8000"
     container_name: where_to_go_app
     volumes:
       - ./Where_to_go/:/where_to_go/Where_to_go
