@@ -5,9 +5,6 @@ services:
     image: pavel2232/where_to_go:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     env_file:
       - .env
-
-
-
     depends_on:
       db:
           condition: service_healthy
