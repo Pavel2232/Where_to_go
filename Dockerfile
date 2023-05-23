@@ -14,8 +14,7 @@ ENV PYTHONUNBUFFERED 1
 
 
 COPY . .
-EXPOSE 8000
 
 ENTRYPOINT ["bash","entrypoint.sh" ]
-CMD ["gunicorn", "Where_to_go.wsgi", "-w", "4","-b","127.0.0.1:8000"]
+CMD ["gunicorn", "Where_to_go.wsgi", "-w", "4","-b","0.0.0.0:8000"]
 
