@@ -6,7 +6,7 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(
-    DEBUG=(bool, True)
+    DEBUG=(bool, False)
 )
 environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 
@@ -107,6 +107,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = Path(BASE_DIR, 'static')
+
 
 MEDIA_URL = "/django_media/"
 MEDIA_ROOT = Path(BASE_DIR, "django_media")
