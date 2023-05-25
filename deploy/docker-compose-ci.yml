@@ -9,7 +9,6 @@ services:
       db:
           condition: service_healthy
     ports:
-    - "80:80"
     - "8000:8000"
     container_name: where_to_go_app
   db:
