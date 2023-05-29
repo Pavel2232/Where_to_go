@@ -28,8 +28,8 @@ jobs:
       - name: render config
         run: |
           cd deploy
-          cat Dockerfile | envbust > Dockerfile
-          cat Nginx.conf | envbust > nginx.conf
+          cat Dockerfile | envsbust > Dockerfile
+          cat Nginx.conf | envsbust > nginx.conf
           cat docker-compose-ci.yml | envsubst > docker-compose.yml
           cat .env_ci | envsubst > .env
       - name: copy files to server
