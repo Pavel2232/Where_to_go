@@ -10,6 +10,9 @@ services:
           condition: service_healthy
     ports:
     - "8000:8000"
+    volumes:
+      - static_volume:/home/where_to_go/static
+      - media_volume:/home/where_to_go/django_media
     container_name: where_to_go_app
   db:
     image: postgres:12.4-alpine
@@ -26,9 +29,20 @@ services:
       timeout: 30s
       retries: 5
     container_name: pg_db
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/where_to_go/static
+      - media_volume:/home/where_to_go/django_media
+    ports:
+      - 1337:80
+    depends_on:
+      - api
 
 
 
 
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:

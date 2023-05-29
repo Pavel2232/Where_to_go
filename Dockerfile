@@ -11,6 +11,7 @@ RUN poetry config virtualenvs.create false \
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+EXPOSE 8000
 
 
 COPY . .

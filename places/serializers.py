@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from places.models import Place
+from places.models import Place, Image
 
 
 class LoadPlaceSerializer(serializers.ModelSerializer):
@@ -27,3 +27,5 @@ class LoadPlaceSerializer(serializers.ModelSerializer):
             lat=self.instance['coordinates'].get('lat'),
             lng=self.instance['coordinates'].get('lng'))
         return places
+
+
