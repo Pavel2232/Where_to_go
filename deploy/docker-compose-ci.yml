@@ -1,7 +1,8 @@
 version: '3.8'
 
 services:
-  nginx: 
+  nginx:
+   restart: always 
    build: . 
    volumes: 
      - static_volume:/home/where_to_go/static 
