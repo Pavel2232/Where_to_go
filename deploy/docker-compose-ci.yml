@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+  nginx: 
+   build: . 
+   volumes: 
+     - static_volume:/home/where_to_go/static 
+     - media_volume:/home/where_to_go/django_media 
+   ports: 
+     - 1337:80 
+   depends_on: 
+     - api
   api:
     image: pavel2232/where_to_go:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     env_file:
@@ -29,15 +38,6 @@ services:
       timeout: 30s
       retries: 5
     container_name: pg_db
-  nginx:
-    build: .
-    volumes:
-      - static_volume:/home/where_to_go/static
-      - media_volume:/home/where_to_go/django_media
-    ports:
-      - 1337:80
-    depends_on:
-      - api
 
 
 
