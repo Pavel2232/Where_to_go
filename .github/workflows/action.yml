@@ -28,7 +28,7 @@ jobs:
       - name: render config
         run: |
           cd deploy
-          cat Dockerfile | envsubst >Dockerfile
+          cat Dockerfile | envsubst > Dockerfile
           cat Nginx.conf | envsubst > nginx.conf
           cat docker-compose-ci.yml | envsubst > docker-compose.yml
           cat .env_ci | envsubst > .env
