@@ -25,7 +25,7 @@ services:
       - static_volume:/home/where_to_go/static
       - media_volume:/home/where_to_go/django_media
     container_name: where_to_go_app
-  db:х
+  db:
     image: postgres:12.4-alpine
     environment:
       POSTGRES_USER: $DB_USER
