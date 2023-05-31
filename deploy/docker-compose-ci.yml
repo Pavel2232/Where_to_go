@@ -9,7 +9,7 @@ services:
      - static_volume:/home/where_to_go/static 
      - media_volume:/home/where_to_go/django_media 
    ports: 
-     - 1337:80 
+     - 80:80 
    depends_on: 
      - api
   api:
@@ -19,8 +19,8 @@ services:
     depends_on:
       db:
           condition: service_healthy
-    ports:
-    - "8000:8000"
+    expose:
+    - 8000
     volumes:
       - static_volume:/home/where_to_go/static
       - media_volume:/home/where_to_go/django_media
