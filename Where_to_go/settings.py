@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 import environ
@@ -6,13 +5,11 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(
-    DEBUG=(bool, True)
+    DEBUG=(bool, False)
 )
-environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env('SECRET_KEY')
-
 
 DEBUG = env('DEBUG')
 
@@ -21,23 +18,19 @@ CSRF_TRUSTED_ORIGINS = ['http://pablisitomaz.ga:8080']
 
 APP = ['places']
 
-
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
+                     'django.contrib.admin',
+                     'django.contrib.auth',
+                     'django.contrib.contenttypes',
+                     'django.contrib.sessions',
+                     'django.contrib.messages',
+                     'django.contrib.staticfiles',
+                     'rest_framework',
 
+                     'tinymce',
+                     'adminsortable2',
 
-    'tinymce',
-    'adminsortable2',
-
-
-
-] + APP
+                 ] + APP
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,15 +63,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Where_to_go.wsgi.application'
 
-
-
-
 DATABASES = {
     'default': env.db('DATABASE_URL')
 }
-
-
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -95,8 +82,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -105,11 +90,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-
 STATIC_URL = '/static/'
 STATIC_ROOT = Path(BASE_DIR, 'static')
-
 
 MEDIA_URL = "/django_media/"
 MEDIA_ROOT = Path(BASE_DIR, "django_media")

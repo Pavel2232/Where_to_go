@@ -36,7 +36,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: "deploy/docker-compose.yml,deploy/.env,deploy/Dockerfile,deploy/nginx.conf"
+          source: "deploy/docker-compose.yml,deploy/.env,deploy/nginx.conf"
           target: "where_to_go"
           strip_components: 1
       - name: deploy Where_to_go_app

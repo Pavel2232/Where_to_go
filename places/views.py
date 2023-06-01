@@ -7,7 +7,6 @@ from places.models import Place, Image
 from django.http import JsonResponse
 
 
-
 def index(request):
     features = []
     feature_template = {
@@ -36,7 +35,6 @@ def index(request):
     places_data = {"type": "FeatureCollection", "features": features}
     context = {"places_data": places_data}
     return render(request, "index.html", context)
-
 
 
 def detail_view(request, pk):
