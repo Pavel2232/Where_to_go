@@ -6,8 +6,8 @@ services:
    restart: always
    volumes: 
      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-     - static_volume:/home/where_to_go/static 
-     - media_volume:/home/where_to_go/django_media 
+     - static_volume:/Where_to_go/static
+     - media_volume:/Where_to_go/django_media
    ports: 
      - 8080:80 
    depends_on: 
@@ -22,8 +22,8 @@ services:
     expose:
     - 8000
     volumes:
-      - static_volume:/home/where_to_go/static
-      - media_volume:/home/where_to_go/django_media
+      - static_volume:/Where_to_go/static
+      - media_volume:/Where_to_go/django_media
     container_name: where_to_go_app
   db:
     image: postgres:12.4-alpine
