@@ -17,7 +17,8 @@ password: 1
 * Заполните .env 
 * SECRET_KEY= секретный ключь приложения джанго
 * DATABASE_URL= psql://имя:пароль@адрес бд/название бд
-* ALLOWED_HOSTS=["localhost","127.0.0.1"] * CSRF_TRUSTED_ORIGINS=["localhost/","127.0.0.1/"]
+* ALLOWED_HOSTS=["localhost","127.0.0.1"] 
+* CSRF_TRUSTED_ORIGINS=["localhost/"]
 * Выполните команду docker-compose up
 * Откройте в браузере
 
