@@ -6,7 +6,7 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: psql://pablo:password@db:5432/wheretogo
+      DATABASE_URL: psql://test:password@db:5432/test
     ports:
       - "8000:8000"
     depends_on:
@@ -18,14 +18,14 @@ services:
   db:
     image: postgres:12.4-alpine
     environment:
-      POSTGRES_USER: pablo
+      POSTGRES_USER: test
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: wheretogo
+      POSTGRES_DB: test
     restart: always
     ports:
     - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U pablo -d wheretogo"]
+      test: ["CMD-SHELL", "pg_isready -U test -d test"]
       interval: 5s
       timeout: 30s
       retries: 5

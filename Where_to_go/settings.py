@@ -13,8 +13,8 @@ SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['http://pablisitomaz.ga:8080']
+ALLOWED_HOSTS = [env('ALLOWED_HOSTS')]
+CSRF_TRUSTED_ORIGINS = [env('ALLOWED_HOSTS')]
 
 APP = ['places']
 
