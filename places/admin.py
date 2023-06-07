@@ -1,29 +1,25 @@
 from adminsortable2.admin import SortableStackedInline, SortableAdminBase
 from django.contrib import admin
 from django.contrib.admin import register
-from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 from places.models import Place, Image
 
 
 class ImageInline(SortableStackedInline):
     """Добавления изображения в админ-панели"""
     model = Image
-    readonly_fields = ['image_link']
-    fields = ('imgs', 'image_link', 'number_image')
+    readonly_fields = ['get_image_display']
+    fields = ('imgs', 'get_image_display', 'number_image')
 
-    def image_link(self, obj):
+    def get_image_display(self, obj: Image):
         try:
-            return mark_safe('<img src = "{url}" width= "{width}" height={height} />'.format(
-                url=obj.imgs.url,
-                width=200,
-                height=200,
-            )
-            )
-
+            url = obj.imgs.url
+            height = 200
+            return format_html('<img src = {url} height={height}/>', url=url, height=height)
         except Exception as e:
             print(e)
 
-    image_link.short_description = "Превью"
+    get_image_display.short_description = 'Превью'
 
 
 @register(Place)

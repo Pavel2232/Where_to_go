@@ -13,8 +13,8 @@ def get_name_image_by_url(url: str) -> str:
 
 
 class Command(BaseCommand):
-    help = """Загрузка данных на сервер, формат:http://адрес/файла.json, для картинки так же -img и ссылка.
-     Важно! фотография прикрепитсья автоматически к последней добавленной place"""
+    help = '''Загрузка данных на сервер, формат:http://адрес/файла.json, для картинки так же -img и ссылка.
+     Важно! фотография прикрепитсья автоматически к последней добавленной place'''
 
     def add_arguments(self, parser):
 
@@ -33,7 +33,7 @@ class Command(BaseCommand):
                     name_img = get_name_image_by_url(image_url)
                     image.imgs.save(name_img, imgs_raw, save=True)
             except Exception as e:
-                print(f"Ошибка запроса: {e}")
+                print(f'Ошибка запроса: {e}')
         else:
             try:
                 for request in options.get('requests'):
@@ -41,4 +41,4 @@ class Command(BaseCommand):
                     serializer = LoadPlaceSerializer(response.json())
                     serializer.create(response.json())
             except Exception as e:
-                print(f"Ошибка запроса: {e}")
+                print(f'Ошибка запроса: {e}')

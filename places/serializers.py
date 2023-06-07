@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from places.models import Place, Image
+from places.models import Place
 
 
 class LoadPlaceSerializer(serializers.ModelSerializer):
