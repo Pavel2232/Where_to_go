@@ -20,7 +20,7 @@ class Place(models.Model):
 
 
 class Image(models.Model):
-    imgs = models.ImageField(upload_to='django_media/', verbose_name='Изображение')
+    img = models.ImageField(upload_to='django_media/', verbose_name='Изображение')
     places = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name='Локация', related_name='images')
     number_image = models.IntegerField(default=1,
                                        verbose_name='Номер фотографии',
