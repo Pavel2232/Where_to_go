@@ -9,7 +9,7 @@ class ImageInline(SortableStackedInline):
     """Добавления изображения в админ-панели"""
     model = Image
     readonly_fields = ['get_image_display']
-    fields = ('imgs', 'get_image_display', 'number_image')
+    fields = ('img', 'get_image_display', 'number_image')
 
     def get_image_display(self, image: Image):
         url = image.img.url
