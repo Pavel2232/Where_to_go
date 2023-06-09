@@ -52,6 +52,6 @@ def detail_view(request, pk):
     }
     imgs = Image.objects.filter(places=place.id)
     for image in imgs:
-        response['imgs'].append(image.imgs.url)
+        response['imgs'].append(image.img.url)
 
     return JsonResponse(response)
