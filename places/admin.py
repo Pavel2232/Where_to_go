@@ -11,13 +11,10 @@ class ImageInline(SortableStackedInline):
     readonly_fields = ['get_image_display']
     fields = ('imgs', 'get_image_display', 'number_image')
 
-    def get_image_display(self, obj: Image):
-        try:
-            url = obj.imgs.url
-            height = 200
-            return format_html('<img src = {url} height={height}/>', url=url, height=height)
-        except Exception as e:
-            print(e)
+    def get_image_display(self, image: Image):
+        url = image.img.url
+        height = 200
+        return format_html('<img src = {url} height={height}/>', url=url, height=height)
 
     get_image_display.short_description = 'Превью'
 

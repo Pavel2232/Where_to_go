@@ -5,9 +5,8 @@
 
 
 [Демка сайта](http://84.201.162.136:8080/).
-Логин и пароль для проверки админки: 
-login: root
-password: 1
+
+
 
 
 
@@ -15,7 +14,7 @@ password: 1
 
 * Скачайте код
 * Заполните .env 
-* SECRET_KEY= секретный ключь приложения джанго
+* SECRET_KEY= секретный ключ приложения джанго
 * DATABASE_URL= psql://имя:пароль@адрес бд/название бд
 * ALLOWED_HOSTS=["localhost","127.0.0.1"] 
 * CSRF_TRUSTED_ORIGINS=["localhost/"]
