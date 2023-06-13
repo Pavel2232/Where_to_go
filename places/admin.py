@@ -14,7 +14,9 @@ class ImageInline(SortableStackedInline):
     def get_image_display(self, image: Image):
         url = image.img.url
         height = 200
-        return format_html('<img src = {url} height={height}/>', url=url, height=height)
+        return format_html('<img src = {url} height={height}/>',
+                           url=url,
+                           height=height)
 
     get_image_display.short_description = 'Превью'
 

@@ -1,48 +1,42 @@
-import copy
-
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
-from places.models import Place, Image
+from places.models import Place
 from django.http import JsonResponse
 
 
 def index(request):
     features = []
-    feature_template = {
-        'type': 'Feature',
-        'geometry': {'type': 'Point', 'coordinates': [1, 1]},
-        'properties': {
-            'title': 'title',
-            'placeId': 'placeId',
-            'detailsUrl': 'detailsUrl',
-        },
-    }
 
     places = Place.objects.all()
 
     for place in places:
-        new_feature = copy.deepcopy(feature_template)
-        new_feature['geometry']['coordinates'][0] = place.lng
-        new_feature['geometry']['coordinates'][1] = place.lat
-        new_feature['properties']['title'] = place.title
-        new_feature['properties']['placeId'] = 'placeId' + str(place.id)
-        new_feature['properties']['detailsUrl'] = reverse(
-            'detail_view', kwargs={'pk': place.id}
-        )
-        features.append(new_feature)
+        feature_template = {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [place.lng, place.lat]},
+            'properties': {
+                'title': place.title,
+                'placeId': 'placeId {}'.format(str(place.id)),
+                'detailsUrl': reverse('detail_view', kwargs={'pk': place.id}),
+            },
+        }
+        features.append(feature_template)
 
-    places_data = {'type': 'FeatureCollection', 'features': features}
-    context = {'places_data': places_data}
+    context = {'places_data': {
+        'type': 'FeatureCollection',
+        'features': features,
+    }
+    }
     return render(request, 'index.html', context)
 
 
 def detail_view(request, pk):
-    place = Place.objects.get(pk=pk)
-
+    place = get_object_or_404(Place, pk=pk)
     response = {
         'title': place.title,
-        'imgs': [],
+        'imgs': [image.img.url for image in place.images.all()],
         'description_short': place.description_short,
         'description_long': place.description_long,
         'coordinates': {
@@ -50,8 +44,6 @@ def detail_view(request, pk):
             'lng': place.lng
         }
     }
-    imgs = Image.objects.filter(places=place.id)
-    for image in imgs:
-        response['imgs'].append(image.img.url)
 
-    return JsonResponse(response)
+    return JsonResponse(response, json_dumps_params={'ensure_ascii': False,
+                                                     'indent': 2}, safe=False)
