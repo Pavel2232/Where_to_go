@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='place',
             name='description_long',
-            field=models.CharField(max_length=5000),
+            field=models.CharField(max_length=10000),
         ),
     ]
